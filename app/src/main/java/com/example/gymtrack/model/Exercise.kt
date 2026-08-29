@@ -1,5 +1,9 @@
 package com.example.gymtrack.model
 
+/**
+ * Modelo de dominio para un Ejercicio.
+ * @param weightKg El peso base siempre se almacena en Kilogramos para consistencia.
+ */
 data class Exercise(
     val id: String,
     val name: String,
@@ -12,6 +16,17 @@ data class Exercise(
     val rest: String,
     val calories: String,
     val description: String,
-    val duration: String = "25 Min",
-    val weight: String = "200 Lb"
-)
+    val duration: String,
+    val weightKg: Double
+) {
+    /**
+     * Devuelve el peso convertido a la unidad deseada.
+     */
+    fun getDisplayWeight(unit: String): Double {
+        return if (unit.lowercase() == "lb") {
+            weightKg * 2.20462
+        } else {
+            weightKg
+        }
+    }
+}

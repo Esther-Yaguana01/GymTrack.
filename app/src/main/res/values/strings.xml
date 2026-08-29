@@ -1,3 +1,69 @@
 <resources>
     <string name="app_name">GymTrack</string>
+    <string name="welcome">Bienvenido 👋</string>
+    <string name="search_placeholder">Buscar ejercicios...</string>
+    <string name="retry">Reintentar</string>
+
+    <!-- Categorías -->
+    <string name="cat_all">Todos</string>
+    <string name="cat_chest">Pecho</string>
+    <string name="cat_back">Espalda</string>
+    <string name="cat_legs">Piernas</string>
+    <string name="cat_shoulders">Hombros</string>
+    <string name="cat_arms">Brazos</string>
+
+    <!-- Detalles -->
+    <string name="weight_label">Peso</string>
+    <string name="equipment">Equipamiento</string>
+    <string name="difficulty">Dificultad</string>
+    <string name="sets_reps">Series y Repeticiones</string>
+    <string name="rest_time">Descanso</string>
+    <string name="calories">Calorías</string>
+    <string name="guide_title">Guía Técnica Paso a Paso</string>
+    <string name="add_favorites">Añadir a Mis Rutinas</string>
+    <string name="remove_favorites">Quitar de Favoritos</string>
+
+    <!-- Configuración -->
+    <string name="settings_title">Configuración</string>
+    <string name="dark_mode">Modo Oscuro</string>
+    <string name="language">Idioma</string>
+    <string name="weight_unit">Unidad de Peso</string>
+    <string name="notifications">Notificaciones</string>
+
+    <!-- Unidades -->
+    <string name="unit_kg">Kilogramos (kg)</string>
+    <string name="unit_lb">Libras (lb)</string>
+    <string name="unit_bodyweight">Peso corporal</string>
+
+    <!-- Bottom Nav -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_favorites">Favoritos</string>
+    <string name="nav_settings">Ajustes</string>
+
+    <!-- Perfil -->
+    <string name="profile_title">Mi Perfil</string>
+    <string name="take_photo">Tomar foto de progreso</string>
+    <string name="workouts">Entrenamientos</string>
+    <string name="streak">Racha</string>
+    <string name="days">días</string>
+    <string name="change_profile_photo">Cambiar Foto de Perfil</string>
+    <string name="my_progress">Mi Progreso</string>
+    <string name="no_progress_photos">No hay fotos de progreso aún</string>
+
+    <!-- Entrenamiento -->
+    <string name="training_config">Configuración de Entrenamiento</string>
+    <string name="series">Series</string>
+    <string name="reps">Reps</string>
+    <string name="rest">Descanso</string>
+    <string name="suggested_weight">Peso Sugerido</string>
+    <string name="no_exercises_found">No se encontraron ejercicios</string>
+    <string name="exercise_not_found">Ejercicio no encontrado</string>
+    <string name="photo_updated">¡Foto de perfil actualizada!</string>
+    <string name="progress_saved">¡Foto de progreso guardada!</string>
+    <string name="camera_permission_required">Se necesita permiso para la cámara</string>
+
+    <!-- Favoritos Extra -->
+    <string name="fav_title">Mis Favoritos ❤️</string>
+    <string name="fav_subtitle">Tus rutinas guardadas</string>
+    <string name="no_favs">No hay favoritos todavía.</string>
 </resources>

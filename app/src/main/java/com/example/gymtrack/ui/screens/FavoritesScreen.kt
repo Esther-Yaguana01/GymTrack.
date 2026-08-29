@@ -10,6 +10,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,17 +19,21 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
+import com.example.gymtrack.R
 import com.example.gymtrack.model.Exercise
 import com.example.gymtrack.ui.components.BottomNavigationBar
+import java.util.Locale
 
 @Composable
 fun FavoritesScreen(
     favoriteExercises: List<Exercise>,
     currentLanguage: String,
+    weightUnit: String,
     onExerciseClick: (String) -> Unit,
     navController: NavController
 ) {
@@ -46,12 +52,12 @@ fun FavoritesScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = if (currentLanguage == "Español") "Mis Favoritos ❤️" else "My Favorites ❤️", 
+                text = stringResource(R.string.fav_title), 
                 style = MaterialTheme.typography.headlineLarge, 
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = if (currentLanguage == "Español") "Tus rutinas guardadas" else "Your saved routines", 
+                text = stringResource(R.string.fav_subtitle), 
                 style = MaterialTheme.typography.titleMedium, 
                 color = Color.Gray
             )
@@ -60,7 +66,7 @@ fun FavoritesScreen(
 
             if (favoriteExercises.isEmpty()) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                    Text(text = if (currentLanguage == "Español") "No hay favoritos todavía." else "No favorites yet.", color = Color.Gray)
+                    Text(text = stringResource(R.string.no_favs), color = Color.Gray)
                 }
             } else {
                 LazyVerticalGrid(
@@ -83,7 +89,9 @@ fun FavoritesScreen(
                                     model = exercise.imageUrl,
                                     contentDescription = exercise.name,
                                     contentScale = ContentScale.Crop,
-                                    modifier = Modifier.fillMaxSize()
+                                    modifier = Modifier.fillMaxSize(),
+                                    placeholder = rememberVectorPainter(Icons.Filled.FitnessCenter),
+                                                                        error = rememberVectorPainter(Icons.Filled.FitnessCenter)
                                 )
 
                                 Box(
@@ -116,12 +124,22 @@ fun FavoritesScreen(
                                         fontWeight = FontWeight.Bold,
                                         maxLines = 1
                                     )
-                                    Text(
-                                        text = exercise.targetMuscle, 
-                                        style = MaterialTheme.typography.bodySmall, 
-                                        color = MaterialTheme.colorScheme.primary,
-                                        maxLines = 1
-                                    )
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Text(
+                                            text = exercise.targetMuscle, 
+                                            style = MaterialTheme.typography.bodySmall, 
+                                            color = MaterialTheme.colorScheme.primary,
+                                            maxLines = 1
+                                        )
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        val displayWeight = String.format(Locale.US, "%.1f", exercise.getDisplayWeight(weightUnit))
+                                        Text(
+                                            text = "• $displayWeight $weightUnit",
+                                            style = MaterialTheme.typography.bodySmall,
+                                            color = Color.LightGray,
+                                            maxLines = 1
+                                        )
+                                    }
                                 }
                             }
                         }

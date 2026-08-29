@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">GymTrack</string>
+    <string name="welcome">Welcome 👋</string>
+    <string name="search_placeholder">Search exercises...</string>
+    <string name="retry">Retry</string>
+
+    <!-- Categories -->
+    <string name="cat_all">All</string>
+    <string name="cat_chest">Chest</string>
+    <string name="cat_back">Back</string>
+    <string name="cat_legs">Legs</string>
+    <string name="cat_shoulders">Shoulders</string>
+    <string name="cat_arms">Arms</string>
+
+    <!-- Details -->
+    <string name="weight_label">Weight</string>
+    <string name="equipment">Equipment</string>
+    <string name="difficulty">Difficulty</string>
+    <string name="sets_reps">Sets and Reps</string>
+    <string name="rest_time">Rest</string>
+    <string name="calories">Calories</string>
+    <string name="guide_title">Step-by-Step Technical Guide</string>
+    <string name="add_favorites">Add to My Routines</string>
+    <string name="remove_favorites">Remove from Favorites</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="weight_unit">Weight Unit</string>
+    <string name="notifications">Notifications</string>
+
+    <!-- Units -->
+    <string name="unit_kg">Kilograms (kg)</string>
+    <string name="unit_lb">Pounds (lb)</string>
+
+    <!-- Bottom Nav -->
+    <string name="nav_home">Home</string>
+    <string name="nav_favorites">Favorites</string>
+    <string name="nav_settings">Settings</string>
+
+    <!-- Profile -->
+    <string name="profile_title">My Profile</string>
+    <string name="take_photo">Take progress photo</string>
+    <string name="workouts">Workouts</string>
+    <string name="streak">Streak</string>
+    <string name="days">days</string>
+    <string name="change_profile_photo">Change Profile Photo</string>
+    <string name="my_progress">My Progress</string>
+    <string name="no_progress_photos">No progress photos yet</string>
+
+    <!-- Training -->
+    <string name="training_config">Training Settings</string>
+    <string name="series">Sets</string>
+    <string name="reps">Reps</string>
+    <string name="rest">Rest</string>
+    <string name="suggested_weight">Suggested Weight</string>
+    <string name="no_exercises_found">No exercises found</string>
+    <string name="photo_updated">Profile photo updated!</string>
+    <string name="progress_saved">Progress photo saved!</string>
+    <string name="camera_permission_required">Camera permission required</string>
+
+    <!-- Favorites Extra -->
+    <string name="fav_title">My Favorites ❤️</string>
+    <string name="fav_subtitle">Your saved routines</string>
+    <string name="no_favs">No favorites yet.</string>
+</resources>

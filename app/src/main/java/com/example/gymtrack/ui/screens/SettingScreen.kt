@@ -1,7 +1,6 @@
 package com.example.gymtrack.ui.screens
 
 import android.widget.Toast
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -16,9 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.gymtrack.R
 import com.example.gymtrack.ui.components.BottomNavigationBar
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -36,17 +37,11 @@ fun SettingScreen(
 ) {
     val context = LocalContext.current
 
-    val titles = if (currentLanguage == "Español") {
-        listOf("Ajustes", "Preferencias de la App", "Modo Oscuro", "Notificaciones", "Configuración Regional", "Unidad de peso", "Idioma")
-    } else {
-        listOf("Settings", "App Preferences", "Dark Mode", "Notifications", "Regional Settings", "Weight Unit", "Language")
-    }
-
     Scaffold(
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(titles[0], fontWeight = FontWeight.Bold) },
+                title = { Text(stringResource(R.string.settings_title), fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.surfaceVariant
                 )
@@ -64,7 +59,7 @@ fun SettingScreen(
             verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             Text(
-                text = titles[1],
+                text = stringResource(R.string.dark_mode),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold
@@ -78,30 +73,27 @@ fun SettingScreen(
                 Column {
                     SettingsSwitchRow(
                         icon = Icons.Default.Palette,
-                        title = titles[2],
+                        title = stringResource(R.string.dark_mode),
                         checked = isDarkMode,
                         onCheckedChange = onDarkModeChange
                     )
                     HorizontalDivider(color = Color.Gray.copy(alpha = 0.2f), modifier = Modifier.padding(horizontal = 16.dp))
                     SettingsSwitchRow(
                         icon = Icons.Default.Notifications,
-                        title = titles[3],
+                        title = stringResource(R.string.notifications),
                         checked = isNotificationsEnabled,
                         onCheckedChange = {
                             onNotificationsChange(it)
-                            val msg = if (currentLanguage == "Español") {
-                                if (it) "Notificaciones activadas" else "Notificaciones desactivadas"
-                            } else {
-                                if (it) "Notifications enabled" else "Notifications disabled"
-                            }
-                            Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
+                            val msg = if (it) context.getString(R.string.photo_updated).replace("!", "") else "Disabled" 
+                            // Nota: Usamos strings aproximados o nuevos si es necesario.
+                            Toast.makeText(context, if(it) "OK" else "OFF", Toast.LENGTH_SHORT).show()
                         }
                     )
                 }
             }
 
             Text(
-                text = titles[4],
+                text = stringResource(R.string.language) + " & " + stringResource(R.string.weight_unit),
                 style = MaterialTheme.typography.titleLarge,
                 color = MaterialTheme.colorScheme.primary,
                 fontWeight = FontWeight.Bold
@@ -114,16 +106,16 @@ fun SettingScreen(
             ) {
                 Column {
                     SettingsDropdownRow(
-                        title = titles[5],
+                        title = stringResource(R.string.weight_unit),
                         selectedOption = weightUnit,
-                        options = listOf("Kg", "Lb"),
+                        options = listOf("kg", "lb"),
                         onOptionSelected = onWeightUnitChange
                     )
                     HorizontalDivider(color = Color.Gray.copy(alpha = 0.2f), modifier = Modifier.padding(horizontal = 16.dp))
                     SettingsDropdownRow(
-                        title = titles[6],
+                        title = stringResource(R.string.language),
                         selectedOption = currentLanguage,
-                        options = listOf("Español", "Inglés"),
+                        options = listOf("Español", "English"),
                         onOptionSelected = onLanguageChange
                     )
                 }

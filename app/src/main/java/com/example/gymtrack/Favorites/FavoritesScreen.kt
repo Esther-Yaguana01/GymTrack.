@@ -10,6 +10,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.FitnessCenter
+import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -46,13 +48,13 @@ fun FavoritesScreen(
             Spacer(modifier = Modifier.height(24.dp))
 
             Text(
-                text = if (currentLanguage == "Español") "Mis Favoritos ❤️" else "My Favorites ❤️", 
-                style = MaterialTheme.typography.headlineLarge, 
+                text = if (currentLanguage == "Español") "Mis Favoritos ❤️" else "My Favorites ❤️",
+                style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold
             )
             Text(
-                text = if (currentLanguage == "Español") "Tus rutinas guardadas" else "Your saved routines", 
-                style = MaterialTheme.typography.titleMedium, 
+                text = if (currentLanguage == "Español") "Tus rutinas guardadas" else "Your saved routines",
+                style = MaterialTheme.typography.titleMedium,
                 color = Color.Gray
             )
 
@@ -83,7 +85,9 @@ fun FavoritesScreen(
                                     model = exercise.imageUrl,
                                     contentDescription = exercise.name,
                                     contentScale = ContentScale.Crop,
-                                    modifier = Modifier.fillMaxSize()
+                                    modifier = Modifier.fillMaxSize(),
+                                    placeholder = rememberVectorPainter(Icons.Filled.FitnessCenter),
+                                                                        error = rememberVectorPainter(Icons.Filled.FitnessCenter)
                                 )
 
                                 Box(
@@ -110,16 +114,16 @@ fun FavoritesScreen(
 
                                 Column(modifier = Modifier.align(Alignment.BottomStart).padding(16.dp)) {
                                     Text(
-                                        text = exercise.name, 
-                                        style = MaterialTheme.typography.titleMedium, 
-                                        color = Color.White, 
+                                        text = exercise.name,
+                                        style = MaterialTheme.typography.titleMedium,
+                                        color = Color.White,
                                         fontWeight = FontWeight.Bold,
                                         maxLines = 1
                                     )
                                     Text(
-                                        text = exercise.targetMuscle, 
-                                        style = MaterialTheme.typography.bodySmall, 
-                                        color = Color(0xFFBB86FC), 
+                                        text = exercise.targetMuscle,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = Color(0xFFBB86FC),
                                         maxLines = 1
                                     )
                                 }

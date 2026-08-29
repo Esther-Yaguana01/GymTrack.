@@ -7,20 +7,16 @@ import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.gymtrack.R
 
 @Composable
 fun BottomNavigationBar(navController: NavController, currentLanguage: String) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-
-    val labels = if (currentLanguage == "Español") {
-        listOf("Inicio", "Favoritos", "Ajustes")
-    } else {
-        listOf("Home", "Favorites", "Settings")
-    }
 
     NavigationBar(
         containerColor = MaterialTheme.colorScheme.surfaceVariant,
@@ -28,7 +24,7 @@ fun BottomNavigationBar(navController: NavController, currentLanguage: String) {
     ) {
         NavigationBarItem(
             icon = { Icon(Icons.Default.Home, contentDescription = null) },
-            label = { Text(labels[0]) },
+            label = { Text(stringResource(R.string.nav_home)) },
             selected = currentRoute == "home",
             onClick = {
                 if (currentRoute != "home") {
@@ -39,7 +35,7 @@ fun BottomNavigationBar(navController: NavController, currentLanguage: String) {
         )
         NavigationBarItem(
             icon = { Icon(Icons.Default.Favorite, contentDescription = null) },
-            label = { Text(labels[1]) },
+            label = { Text(stringResource(R.string.nav_favorites)) },
             selected = currentRoute == "favorites",
             onClick = {
                 if (currentRoute != "favorites") navController.navigate("favorites")
@@ -48,7 +44,7 @@ fun BottomNavigationBar(navController: NavController, currentLanguage: String) {
         )
         NavigationBarItem(
             icon = { Icon(Icons.Default.Settings, contentDescription = null) },
-            label = { Text(labels[2]) },
+            label = { Text(stringResource(R.string.nav_settings)) },
             selected = currentRoute == "settings",
             onClick = {
                 if (currentRoute != "settings") navController.navigate("settings")
